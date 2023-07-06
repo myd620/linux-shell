@@ -11,7 +11,8 @@ Usage() {
 }
 
 GetProcNum () {
-  proc_num=`ps -ef | grep -v grep | grep $BIN_NAME | wc -l`
+  # proc_num=`ps -ef | grep -v grep | grep $BIN_NAME | wc -l` //不建议使用这个， 如果脚本名和进程名称一样，会出错
+  proc_num=`pgrep $BIN_NAME | wc -l`
   pid=`ps -ef|grep $BIN_NAME|grep -v grep|awk '{print $2}'`
 }
 
